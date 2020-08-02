@@ -1,0 +1,46 @@
+
+{% block title %}Societe index{% endblock %}
+
+{% block body %}
+    <h1>Societe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Adresse</th>
+                <th>Tel</th>
+                <th>Nomsoc</th>
+                <th>Creation</th>
+                <th>Siteweb</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for societe in societes %}
+            <tr>
+                <td>{{ societe.adresse }}</td>
+                <td>{{ societe.tel }}</td>
+                <td>{{ societe.nomsoc }}</td>
+                <td>{{ societe.creation ? societe.creation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ societe.siteweb }}</td>
+                {% for user in societe.users %}
+                <td>{{user.username }}</td>
+                {% endfor %}
+                <td>
+                    <a href="{{ path('societe_show', {'id': societe.id}) }}">show</a>
+                    <a href="{{ path('societe_edit', {'id': societe.id}) }}">edit</a>
+                    <a href="{{ path('societe_gerant', {'id': societe.id}) }}">Afficher gerant</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('societe_new') }}">Create new</a>
+{% endblock %}

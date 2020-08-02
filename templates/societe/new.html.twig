@@ -1,0 +1,11 @@
+{% extends '@!EasyAdmin/layout.html.twig' %}
+
+{% block title %}New Societe{% endblock %}
+
+{% block body %}
+    <h1>Create new Societe</h1>
+
+    {{ include('societe/_form.html.twig') }}
+
+    <a href="{{ path('societe_index') }}">back to list</a>
+{% endblock %}

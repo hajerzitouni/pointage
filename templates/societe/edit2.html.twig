@@ -1,0 +1,15 @@
+{% extends '@!EasyAdmin/layout.html.twig' %}
+
+{% block title %}Edit Societe{% endblock %}
+
+{% block body %}
+    <h1>Edit Societe</h1>
+    //{% for societe in societe %}
+    <a href="{{ path('societe_affecter') }}">update</a>
+
+
+
+    <a href="{{ path('societe_index') }}">back to list</a>
+
+    {{ include('societe/_delete_form.html.twig') }}
+{% endblock %}

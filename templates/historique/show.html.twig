@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historique{% endblock %}
+
+{% block body %}
+    <h1>Historique</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ historique.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ historique.date ? historique.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure_arrive</th>
+                <td>{{ historique.heureArrive ? historique.heureArrive|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure_depart</th>
+                <td>{{ historique.heureDepart ? historique.heureDepart|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ historique.description }}</td>
+            </tr>
+            <tr>
+                <th>Ecart</th>
+                <td>{{ historique.ecart }}</td>
+            </tr>
+            <tr>
+                <th>Conge</th>
+                <td>{{ historique.conge ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Creation</th>
+                <td>{{ historique.creation ? historique.creation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('historique_index') }}">back to list</a>
+
+    <a href="{{ path('historique_edit', {'id': historique.id}) }}">edit</a>
+
+    {{ include('historique/_delete_form.html.twig') }}
+{% endblock %}

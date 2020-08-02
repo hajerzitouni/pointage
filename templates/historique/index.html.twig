@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historique index{% endblock %}
+
+{% block body %}
+    <h1>Historique index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Employe</th>
+                <th>Date</th>
+                <th>Heure_arrive</th>
+                <th>Heure_depart</th>
+                <th>Description</th>
+                <th>Conge</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for historique in historiques %}
+            <tr>
+                <td>{{ historique.Employe}}</td>
+                <td>{{ historique.date ? historique.date|date('Y-m-d') : '' }}</td>
+                <td>{{ historique.heure_Arrive }} </td>
+                <td>{{ historique.heure_Depart}}</td>
+                <td>{{ historique.description }}</td>
+                <td>{{ historique.conge ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('historique_show', {'id': historique.id}) }}">show</a>
+                    <a href="{{ path('historique_edit', {'id': historique.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('historique_new') }}">Create new</a>
+{% endblock %}

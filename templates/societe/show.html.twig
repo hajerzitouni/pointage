@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Societe{% endblock %}
+
+{% block body %}
+    <h1>Societe</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ societe.id }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ societe.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ societe.tel }}</td>
+            </tr>
+            <tr>
+                <th>Nomsoc</th>
+                <td>{{ societe.nomsoc }}</td>
+            </tr>
+            <tr>
+                <th>Creation</th>
+                <td>{{ societe.creation ? societe.creation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Siteweb</th>
+                <td>{{ societe.siteweb }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ societe.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('societe_index') }}">back to list</a>
+    <a href="{{ path('societe_edit2', {'id': societe.id}) }}">affecter</a>
+    <a href="{{ path('societe_edit', {'id': societe.id}) }}">edit</a>
+
+    {{ include('societe/_delete_form.html.twig') }}
+{% endblock %}

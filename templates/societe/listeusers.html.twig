@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+                {{ societe.nomsoc }}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nom gérant </th>
+                        <th> email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+  {% for user in societe.users %}
+  <tr>
+      <td>{{user.username }}</td>
+
+  </tr>
+
+
+                    </tbody>
+                </table>
+
+  {% endfor %}
+{% endblock %}

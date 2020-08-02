@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Departement index{% endblock %}
+
+{% block body %}
+    <h1>Departement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>chef dep</th>
+                <th>Creation</th>
+                <th>specialite</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for departement in departements %}
+            <tr>
+                <td>{{ departement.nom}}</td>
+                <td>{{ departement.user}}</td>
+                <td>{{ departement.creation ? departement.creation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ departement.specialite}}</td>
+
+                <td>
+                    <a href="{{ path('departement_show', {'id': departement.id}) }}">show</a>
+                    <a href="{{ path('departement_edit', {'id': departement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('departement_new') }}">Create new</a>
+{% endblock %}
